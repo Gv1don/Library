@@ -21,6 +21,6 @@
             <label style="margin-top: 10px" for="formGroupExampleInput">Количество</label>
             <input name="amount" value="" type="text" class="form-control" id="formGroupExampleInput" placeholder="Количество книг" required pattern="[0-9]*">
         </div>
-        <button name="type" value="authors" type="submit" class="btn btn-primary submit">Подтвердить</button>
+        <button name="type" value="books" type="submit" class="btn btn-primary submit">Подтвердить</button>
     </form>
 @endsection
