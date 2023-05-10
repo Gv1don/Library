@@ -1,7 +1,7 @@
 @extends('header')
 
 @section('content')
-    <form class="createForm" action="{{ route('create') }}" method="POST">
+    <form class="createForm" action="{{ route('update') }}" method="POST">
         @csrf
         <div class="form-group" style="margin-bottom: 10px">
             <label for="formGroupExampleInput">ФИО</label>

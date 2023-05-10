@@ -223,22 +223,13 @@ class DataBasesController
                 $genre = $request->input('genre');
                 $amount = $request->input('amount');
                 $id = $request->input('id');
-                $book = DB::table('books')
-                ->join('authors', 'books.author_id', '=', 'authors.id')
-                ->join('genres', 'books.genre_id', '=', 'genres.id')
-                ->where('books.title', $title)
-                ->where('authors.name', '!=', $author)
-                ->Where('genres.title', '!=', $genre)
-                ->exists();
 
-                if(!$book){
-                    $book = Book::where('id', $id)->first();
-                    $book->title = $title;
-                    $book->author_id = $author;
-                    $book->genre_id = $genre;
-                    $book->amount = $amount;
-                    $book->save();
-                }
+                $book = Book::where('id', $id)->first();
+                $book->title = $title;
+                $book->author_id = $author;
+                $book->genre_id = $genre;
+                $book->amount = $amount;
+                $book->save();
 
                 return redirect()->route('books');
                 break;
