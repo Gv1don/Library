@@ -291,7 +291,7 @@ class DataBasesController
                 try {
                     $author->delete();
                 } catch (\Exception $e) {
-                    // Обработка ошибки
+                    return redirect()->route('error');
                 }
 
                 return redirect()->route('authors');
@@ -299,25 +299,49 @@ class DataBasesController
 
             case 'books':
                 $book = Book::where('id', $id)->first();
-                $book->delete();
+
+                try {
+                    $book->delete();
+                } catch (\Exception $e) {
+                    return redirect()->route('error');
+                }
+
                 return redirect()->route('books');
                 break;
 
             case 'genres':
                 $genre = Genre::where('id', $id)->first();
-                $genre->delete();
+                
+                try {
+                    $genre->delete();
+                } catch (\Exception $e) {
+                    return redirect()->route('error');
+                }
+
                 return redirect()->route('genres');
                 break;
 
             case 'readers':
                 $reader = Reader::where('id', $id)->first();
-                $reader->delete();
+
+                try {
+                    $reader->delete();
+                } catch (\Exception $e) {
+                    return redirect()->route('error');
+                }
+
                 return redirect()->route('readers');
                 break;
 
             case 'story':
                 $story = Story::where('id', $id)->first();
-                $story->delete();
+                
+                try {
+                    $story->delete();
+                } catch (\Exception $e) {
+                    return redirect()->route('error');
+                }
+
                 return redirect()->route('story');
                 break;
 

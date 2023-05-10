@@ -22,3 +22,7 @@ Route::get('/update', [DataBasesController::class, 'Update'])->name('update');
 Route::post('/update', [DataBasesController::class, 'UpdateSave']);
 
 Route::post('/delete', [DataBasesController::class, 'Delete'])->name('delete');
+
+Route::get('/error', function(){
+    return view('error');
+})->name('error');
