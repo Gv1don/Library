@@ -1,0 +1,66 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body{
+    height: 100%;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+/* Tables page begin */
+
+.site-header.sticky-top.py-1{
+    background-color: rgba(0, 0, 0, .85);
+}
+
+.headTable{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.tableName{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.dashboard{
+    display: flex;
+    justify-content: end;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.btn.btn-primary, .btn.btn-outline-danger{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+/* Tables page end */
+
+/* Create page begin */
+
+.createForm{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn.btn-primary.submit{
+    margin-top: 20px;
+}
+
+/* Create page end */
