@@ -5,7 +5,7 @@
         @csrf
         <div class="form-group">
             <label for="formGroupExampleInput">Название книги</label>
-            <input name="name" value="" type="text" class="form-control" id="formGroupExampleInput" placeholder="Название книги" required>
+            <input name="title" value="" type="text" class="form-control" id="formGroupExampleInput" placeholder="Название книги" required>
             <label style="margin-top: 10px" for="formGroupExampleInput">Автор</label>
             <select name="author" id="inputState" class="form-control">
                 @foreach ($authors as $id => $name)

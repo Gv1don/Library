@@ -99,22 +99,13 @@ class DataBasesController
                 $author = $request->input('author');
                 $genre = $request->input('genre');
                 $amount = $request->input('amount');
-                $bookExists = DB::table('books')
-                ->join('authors', 'books.author_id', '=', 'authors.id')
-                ->join('genres', 'books.genre_id', '=', 'genres.id')
-                ->where('books.title', $title)
-                ->where('authors.name', '!=', $author)
-                ->Where('genres.title', '!=', $genre)
-                ->exists();
                 
-                if(!$book){
-                    $book = new Book();
-                    $book->title = $title;
-                    $book->author = $author;
-                    $book->genre = $genre;
-                    $book->amount = $amount;
-                    $book->save();
-                }
+                $book = new Book();
+                $book->title = $title;
+                $book->author_id = $author;
+                $book->genre_id = $genre;
+                $book->amount = $amount;
+                $book->save();
 
                 return redirect()->route('books');
                 break;
@@ -296,7 +287,13 @@ class DataBasesController
         switch($type){
             case 'authors':
                 $author = Author::where('id', $id)->first();
-                $author->delete();
+                
+                try {
+                    $author->delete();
+                } catch (\Exception $e) {
+                    // Обработка ошибки
+                }
+
                 return redirect()->route('authors');
                 break;
 
