@@ -11,6 +11,7 @@
             <label for="formGroupExampleInput">Номер телефона</label>
             <input name="phone" value="{{ $reader->phone }}" type="text" class="form-control" id="formGroupExampleInput" placeholder="+70000000000" required pattern="^\+7\d{10}$" >
         </div>
+        <input type="hidden" name="id" value="{{ $reader->id }}">
         <button name="type" value="readers" type="submit" class="btn btn-primary submit">Подтвердить</button>
     </form>
 @endsection

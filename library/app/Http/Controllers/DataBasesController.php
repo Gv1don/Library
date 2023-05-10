@@ -190,8 +190,15 @@ class DataBasesController
                 return view('update_reader', compact('reader'));
                 break;
             case 'story':
+                $books = DB::table('books')
+                ->join('authors', 'books.author_id', '=', 'authors.id')
+                ->join('genres', 'books.genre_id', '=', 'genres.id')
+                ->select('books.id', 'books.title', 'authors.name as author_name', 'genres.title as genre_name')
+                ->get();
+                $readers = DB::table('readers')->pluck('name', 'id');
                 $story = Story::where('id', $id)->first();
-                return view('update_story');
+
+                return view('update_story', compact('books', 'readers', 'story'));
                 break;
             default:
                 return redirect()->route('story');
@@ -222,7 +229,6 @@ class DataBasesController
                 $author = $request->input('author');
                 $genre = $request->input('genre');
                 $amount = $request->input('amount');
-                $id = $request->input('id');
 
                 $book = Book::where('id', $id)->first();
                 $book->title = $title;
@@ -253,6 +259,7 @@ class DataBasesController
                 $reader = Reader::where('name', $name)->where('phone', $phone)->first();
 
                 if(!$reader){
+                    $reader = Reader::where('id', $id)->first();
                     $reader->name = $name;
                     $reader->phone = $phone;
                     $reader->save();
@@ -264,10 +271,12 @@ class DataBasesController
             case 'story':
                 $reader_id = $request->input('reader_id');
                 $book_id = $request->input('book_id');
+
+                $story = Story::where('id', $id)->first();
                 $story->reader_id = $reader_id;
                 $story->book_id = $book_id;
                 $story->save();
-
+                
                 return redirect()->route('story');
                 break;
             
