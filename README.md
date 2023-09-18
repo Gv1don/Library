@@ -2,7 +2,8 @@
 Library account with book tracking 
 
  # Start
- *configure env file before start for your performance*  
+ *configure env file before start for your performance!*  
+   
  cd library  
  composer install  
  
