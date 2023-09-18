@@ -3,7 +3,7 @@ Library account with book tracking
 
  # Start
  *configure env file before start for your performance*
- cd library /n
+ cd library
  composer install
  
  ./vendor/bin/sail up -d
